@@ -4,7 +4,7 @@ namespace App\Http\Requests\Account\User\Forum;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     public function authorize()
     {
@@ -14,7 +14,7 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'=>['required','unique:forums,title','min:10','max:191'],
+            'title'=>['required','unique:forums,title,'.$this->route('user_forum')->id,'min:10','max:191'],
             'english_title'=>['required','min:10','max:191','regex:/^[a-zA-Z\s]+$/'],
             'demo'=>['required','min:100','max:1000'],
             'category'=>['required','array','min:3'],

@@ -62,6 +62,18 @@ Route::prefix('account')->group(function()
                 Route::get('/',[Account\User\ForumController::class,'create'])->name('account.user.forum.create');
                 Route::post('/',[Account\User\ForumController::class,'store']);
             });
+            Route::prefix('{user_forum}')->group(function()
+            {
+                Route::bind('user_forum',function($id)
+                {
+                    return auth('user')->user()->forums()->findOrFail($id);
+                });
+                Route::prefix('edit')->group(function()
+                {
+                    Route::get('/',[Account\User\ForumController::class,'edit'])->name('account.user.forum.edit');
+                    Route::post('/',[Account\User\ForumController::class,'update']);
+                });
+            });
         });
     });
 

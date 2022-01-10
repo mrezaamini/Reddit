@@ -3,6 +3,7 @@ $(document).ready(function()
     var timeOut=250
     $('.balloon').each(function()
     {
+        console.log($(this))
         var position=$(this).attr('balloon-position')
         var text=$(this).attr('balloon-text')
         $(this).removeAttr('balloon-text')
