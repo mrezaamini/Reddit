@@ -1,0 +1,178 @@
+// Set font family
+@fontFamily: 'irSans';
+
+.uiColors(){
+    success: #00c44f;
+    danger: #ff3547;
+    primary: #1E96FC;
+    warning: #fb3;
+    purple: #505fd2;
+    dark: #252525;
+    white: #f8f8f8;
+    default: #eeeef0;
+}
+
+.btn,input[type=reset]{
+    .disableTextSelect();
+    font-family: @fontFamily;
+    font-weight: 300;
+    border: none;
+    border-radius: 7px;
+    padding: 10px 18px !important;
+    width: auto;
+    overflow: visible;
+    vertical-align: middle;
+    background: #b4b4b4;
+    color: .uiColors[dark];
+    transition: all ease 0.1s;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 1.5;
+    &:focus,&:active{
+        opacity: 0.7;
+    }
+
+    &[disabled]{
+        opacity: 0.8;
+        cursor: no-drop;
+    }
+
+    &.btn-circle{
+        border-radius: 50px;
+    }
+    &.btn-bgh{
+        background: transparent;
+        box-shadow: none !important;
+        transition: all ease 0.2s;
+        &:active{
+            opacity: 1;
+        }
+    }
+
+    &.btn-icon{
+        i{
+            vertical-align: middle;
+            font-size: 16px;
+            margin-left: 5px;
+        }
+    }
+}
+.label{
+    font-family: @fontFamily;
+    font-weight: 300;
+    border: none;
+    border-radius: 7px;
+    margin: 0;
+    padding: 5px 7px;
+    vertical-align: middle;
+    font-size: 11px !important;
+    width: auto;
+    overflow: visible;
+    background: #b4b4b4;
+    color: .uiColors[dark];
+    transition: all ease 0.2s;
+    line-height: 1 !important;
+}
+
+.text-success{
+    color: .uiColors[success] !important;
+}
+.text-danger{
+    color: .uiColors[danger] !important;
+}
+.text-primary{
+    color: .uiColors[primary] !important;
+}
+.text-warning{
+    color: .uiColors[warning] !important;
+}
+.text-purple{
+    color: .uiColors[purple] !important;
+}
+.text-dark{
+    color: .uiColors[dark] !important;
+}
+.text-white{
+    color: .uiColors[white] !important;
+}
+
+.label.label-success,
+.btn.btn-success{
+    background: .uiColors[success];
+    color: .uiColors[white];
+}
+.label.label-danger,
+.btn.btn-danger{
+    background: .uiColors[danger];
+    color: .uiColors[white];
+}
+.label.label-primary,
+.btn.btn-primary{
+    background: .uiColors[primary];
+    color: .uiColors[white];
+    font-weight: normal;
+}
+.label.label-purple,
+.btn.btn-purple{
+    background: .uiColors[purple];
+    color: .uiColors[white];
+}
+.label.label-warning,
+.btn.btn-warning{
+    background: .uiColors[warning];
+    color: .uiColors[dark];
+    font-weight: 500;
+}
+.label.label-dark,
+.btn.btn-dark{
+    background: .uiColors[dark];
+    color: .uiColors[white];
+}
+.label.label-default,
+.btn.btn-default{
+    background: .uiColors[default];
+    color: .uiColors[dark];
+    font-weight: 500;
+}
+.label.label-white,
+.btn.btn-white{
+    background: #fff;
+    color: .uiColors[dark];
+    font-weight: normal;
+}
+
+.btn.btn-success{
+    background: .uiColors[success];
+    color: .uiColors[white];
+}
+.btn.btn-danger{
+    background: .uiColors[danger];
+    color: .uiColors[white];
+}
+.btn.btn-primary{
+    background: .uiColors[primary];
+    color: .uiColors[white];
+}
+.btn.btn-purple{
+    background: .uiColors[purple];
+    color: .uiColors[white];
+}
+.btn.btn-warning{
+    background: .uiColors[warning];
+    color: .uiColors[dark];
+    font-weight: normal;
+}
+.btn.btn-dark{
+    background: .uiColors[dark];
+    color: .uiColors[white];
+}
+.btn.btn-default{
+    background: .uiColors[default];
+    color: .uiColors[dark];
+    font-weight: normal;
+}
+.btn.btn-white{
+    background: #fff;
+    color: .uiColors[dark];
+    font-weight: normal;
+}
