@@ -9,6 +9,6 @@ class DeskController extends Controller
 {
     public function index()
     {
-        dd(auth('user')->user());
+        return view('account.user.index');
     }
 }

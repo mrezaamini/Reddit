@@ -17,7 +17,7 @@ class LoginController extends Controller
         // Login to auth
         if(auth('user')->attempt(['username'=>$request->username,'password'=>$request->password]))
         {
-            return redirect()->route('account.user.desk')->with('success',[$request->name.' '.$request->surname.' عزیز، با موفقیت به حساب کاربری وارد شدید']);
+            return redirect()->route('account.user.desk')->with('success',[auth('user')->user()->name.' '.auth('user')->user()->surname.' عزیز، با موفقیت به حساب کاربری وارد شدید']);
         }else{
             return redirect()->route('account.login')->withErrors('نام کاربری و یا گذرواژه اشتباه می باشد');
         }

@@ -1,3 +1,13 @@
+html,body{
+    overflow: hidden;
+}
+html{
+    overflow-y: scroll;
+}
+body{
+    overflow-y: hidden;
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -71,6 +81,11 @@ html{
 *{
     box-sizing: inherit;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
 
 
 
@@ -116,6 +131,42 @@ html{
 .scrollBarReverseBack(@scrollBarWidth: 5px,@themeColor: #bebebe,@borderRadius: 4px){
     &::-webkit-scrollbar{
         width: @scrollBarWidth;
+        border-radius: @borderRadius;
+    }
+    &::-webkit-scrollbar-track{
+        background: @themeColor;
+        border-radius: @borderRadius;
+    }
+    &::-webkit-scrollbar-thumb{
+        background: darken(@themeColor,10);
+        border-radius: @borderRadius;
+    }
+    &::-webkit-scrollbar-thumb:hover{
+        background: darken(@themeColor,10);
+        border-radius: @borderRadius;
+    }
+}
+.scrollBarX(@scrollBarHeight: 5px,@themeColor: #bebebe,@borderRadius: 4px){
+    &::-webkit-scrollbar{
+        height: @scrollBarHeight;
+        border-radius: @borderRadius;
+    }
+    &::-webkit-scrollbar-track{
+        background: @themeColor;
+        border-radius: @borderRadius;
+    }
+    &::-webkit-scrollbar-thumb{
+        background: lighten(@themeColor,15);
+        border-radius: @borderRadius;
+    }
+    &::-webkit-scrollbar-thumb:hover{
+        background: lighten(@themeColor,10);
+        border-radius: @borderRadius;
+    }
+}
+.scrollBarReverseBackX(@scrollBarHeight: 5px,@themeColor: #bebebe,@borderRadius: 4px){
+    &::-webkit-scrollbar{
+        height: @scrollBarHeight;
         border-radius: @borderRadius;
     }
     &::-webkit-scrollbar-track{
