@@ -56,10 +56,10 @@ Route::prefix('account')->group(function()
         // Forum
         Route::prefix('forum')->group(function()
         {
-            Route::get('list',[Account\User\ForumController::class,'index']);
+            Route::get('list',[Account\User\ForumController::class,'index'])->name('account.user.forum.index');
             Route::prefix('add')->group(function()
             {
-                Route::get('/',[Account\User\ForumController::class,'create']);
+                Route::get('/',[Account\User\ForumController::class,'create'])->name('account.user.forum.create');
                 Route::post('/',[Account\User\ForumController::class,'store']);
             });
         });
