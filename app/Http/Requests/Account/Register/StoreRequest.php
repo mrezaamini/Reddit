@@ -16,9 +16,9 @@ class StoreRequest extends FormRequest
         return [
             'name'=>['required','max:35'],
             'surname'=>['required','max:35'],
-            'username'=>['required','regex:/^[a-zA-Z][a-zA-Z0-9._]+$/','unique:users,id'],
+            'username'=>['required','regex:/^[a-zA-Z][a-zA-Z0-9._]+$/','unique:users,username'],
             'password'=>['required','regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/'],
-            'email'=>['required','email','unique:users,id']
+            'email'=>['required','email','unique:users,email']
         ];
     }
 
