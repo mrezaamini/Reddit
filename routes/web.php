@@ -53,6 +53,16 @@ Route::prefix('account')->group(function()
         // Desk
         Route::get('desk',[Account\User\DeskController::class,'index'])->name('account.user.desk');
 
+        // Forum
+        Route::prefix('forum')->group(function()
+        {
+            Route::get('list',[Account\User\ForumController::class,'index']);
+            Route::prefix('add')->group(function()
+            {
+                Route::get('/',[Account\User\ForumController::class,'create']);
+                Route::post('/',[Account\User\ForumController::class,'store']);
+            });
+        });
     });
 
 });
