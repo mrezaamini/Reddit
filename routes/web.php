@@ -17,7 +17,10 @@ use App\Http\Controllers\Account;
 // /
 Route::prefix('/')->group(function()
 {
-
+    Route::get('/',function()
+    {
+        dd(1);
+    });
 });
 
 // Account
@@ -34,7 +37,7 @@ Route::prefix('account')->group(function()
         });
 
         // Register
-        Route::prefix('login')->group(function()
+        Route::prefix('register')->group(function()
         {
             Route::get('/',[Account\RegisterController::class,'index']);
             Route::post('/',[Account\RegisterController::class,'register']);

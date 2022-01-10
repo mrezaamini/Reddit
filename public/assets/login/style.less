@@ -1,0 +1,153 @@
+body{
+    background: #f4f4f4;
+    line-height: 1;
+}
+
+// Start login
+.login{
+    .disableTextSelect();
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 480px;
+    box-sizing: border-box;
+    padding: 30px;
+    background: #fff;
+    border-radius: 35px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.07);
+    .content{
+        .text{
+            h6{
+                font-size: 17px !important;
+                color: #FFCB09;
+            }
+            p{
+                line-height: 1.7;
+                margin-top: 10px;
+                font-size: 13px;
+                font-weight: 500;
+                color: #252525;
+                span{
+                    margin: 0 5px;
+                    font-size: 15px;
+                }
+            }
+            a{
+                display: block;
+                color: #0C4FA0;
+                font-weight: 500;
+                font-size: 12px;
+                padding: 5px 0;
+                margin-top: 10px;
+            }
+        }
+        .notice{
+            margin-bottom: -15px;
+        }
+        form{
+            margin-top: 35px;
+            label{
+                width: 100%;
+            }
+            a{
+                display: block;
+                color: #0475C7;
+                font-size: 12px;
+                font-weight: 500;
+                margin-bottom: 20px;
+            }
+            .item{
+                display: flex;
+                .input{
+                    flex: 1;
+                    position: relative;
+                    input{
+                        height: 50px;
+                        width: 100%;
+                        padding: 0 25px;
+                        font-size: 15px;
+                        font-family: 'irSans';
+                        border: 0;
+                        outline: none;
+                        background: rgba(45,45,45,0.05);
+                        border-radius: 10px;
+                        color: #353535;
+                        font-weight: 500;
+                        transition: all ease 0.2s;
+                        &[type='password']{
+
+                        }
+                        &::placeholder{
+                            font-weight: normal;
+                            font-size: 14px;
+                            letter-spacing: 0px;
+                        }
+                        &:focus{
+                            box-shadow: 0 0 0 3px rgba(0,0,0,0.11);
+                        }
+                    }
+                    i{
+                        position: absolute;
+                        left: 20px;
+                        top: 50%;
+                        font-size: 18px;
+                        color: #0C4FA0;
+                        transform: translateY(-50%);
+                        &.fa-phone-volume{
+                            transform: translateY(-50%) rotate(-45deg);
+                        }
+                    }
+                    &:not(:first-child){
+                        margin-right: 15px;
+                    }
+                }
+                &:not(:last-child){
+                    margin-top: 15px    ;
+                }
+            }
+            .input-mask{
+                margin-top: 35px;
+                padding: 0;
+            }
+            .footer{
+                .clearFix();
+                margin-top: 25px;
+                a{
+                    font-family: 'irSans';
+                    float: right;
+                    color: #757575;
+                    font-weight: 500;
+                    font-size: 13px;
+                    margin-top: 15px;
+                    i,span{
+                        color: #0C4FA0;
+                    }
+                    i{
+                        vertical-align: middle;
+                        font-size: 11px;
+                        margin-right: 5px;
+                        transition: all ease 0.2s;
+                    }
+                    &:hover{
+                        i{
+                            margin-right: 10px;
+                            margin-left: -5px;
+                        }
+                    }
+                }
+                button{
+                    cursor: pointer;
+                    border: 0;
+                    float: left;
+                    color: #fff;
+                    padding: 10px 27px;
+                    border-radius: 10px;
+                    background: linear-gradient(247deg, #3f84d2 0%, #0C4FA0 100%);
+                    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+                    font-weight: normal;
+                }
+            }
+        }
+    }
+}
