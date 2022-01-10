@@ -117,6 +117,16 @@ class CreatePermissionTables extends Migration
         app('cache')
             ->store(config('permission.cache.store') != 'default' ? config('permission.cache.store') : null)
             ->forget(config('permission.cache.key'));
+
+        // Create default permissions
+        foreach(config('global.permissions') as $guardName=>$permissions)
+        {
+            foreach($permissions as $permission)
+            {
+                Permission::create(['guard_name'=>$guardName,'name'=>$permission]);
+            }
+        }
+
     }
 
     /**

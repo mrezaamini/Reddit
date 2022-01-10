@@ -16,23 +16,12 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->rememberToken();
-			$table->char('activation_code',60);
-			$table->uuid('api')->unique()->nullable();
-			$table->char('mobile',11)->unique();
-			$table->string('name',35)->nullable();
-			$table->string('surname',35)->nullable();
-			$table->char('national_code',11)->unique()->nullable();
-			$table->string('title',100)->nullable();
-			$table->string('site_address',175)->nullable();
-			$table->char('phone',12)->nullable();
-			$table->text('about')->nullable();
-			$table->string('birth_certificate_number',11)->nullable();
-			$table->date('birthday')->nullable();
-			$table->enum('gender',['0','1'])->nullable();
-			$table->string('address')->nullable();
+			$table->string('name',35);
+			$table->string('surname',35);
+			$table->string('mail')->primary();
+			$table->string('username',35)->primary();
+            $table->char('password',60);
 			$table->string('avatar')->nullable();
-			$table->boolean('available')->default(false);
-			$table->timestamp('approved_at')->nullable();
             $table->timestamps();
         });
     }
