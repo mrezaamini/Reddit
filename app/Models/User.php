@@ -11,10 +11,6 @@ class User extends Authenticatable
 	use HasFactory;
 	use HasRoles;
 	protected $guarded=[
-		'id','remember_token','created_at','updated_at'
+		'id','created_at','updated_at'
 	];
-	public function getAuthPassword()
-	{
-		return $this->activation_code;
-	}
 }

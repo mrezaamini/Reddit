@@ -32,14 +32,14 @@ Route::prefix('account')->group(function()
         // Login
         Route::prefix('login')->group(function()
         {
-            Route::get('/',[Account\LoginController::class,'index']);
+            Route::get('/',[Account\LoginController::class,'index'])->name('account.login');
             Route::post('/',[Account\LoginController::class,'login']);
         });
 
         // Register
         Route::prefix('register')->group(function()
         {
-            Route::get('/',[Account\RegisterController::class,'index']);
+            Route::get('/',[Account\RegisterController::class,'index'])->name('account.register');
             Route::post('/',[Account\RegisterController::class,'register']);
         });
     });
@@ -47,6 +47,11 @@ Route::prefix('account')->group(function()
     // User
     Route::middleware('auth:user')->prefix('user')->group(function()
     {
+        // Logout
+        Route::get('logout',[Account\User\LogoutController::class,'logout'])->name('account.user.logout');
+
+        // Desk
+        Route::get('desk',[Account\User\DeskController::class,'index'])->name('account.user.desk');
 
     });
 
