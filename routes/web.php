@@ -17,17 +17,30 @@ use App\Http\Controllers\{Account,Home};
 // /
 Route::prefix('/')->group(function()
 {
-    Route::get('/',[Home\Forum\ForumController::class,'index']);
+    Route::get('/',[Home\Forum\ForumController::class,'index'])->name('home');
     Route::prefix('{home_forum:slug}')->group(function()
     {
+        // Bind
         Route::bind('home_forum',function($slug)
         {
             return \App\Models\Forum::where('slug','=',$slug)->firstOrFail();
         });
-        Route::get('information',[Home\Forum\ForumController::class,'show']);
+
+        // Information
+        Route::get('information',[Home\Forum\ForumController::class,'show'])->name('home.forum.show');
+
+        // Posts
         Route::prefix('post')->group(function()
         {
-            Route::get('list',[Home\Forum\PostController::class,'index']);
+            Route::get('list',[Home\Forum\PostController::class,'index'])->name('home.forum.post.index');
+            Route::get('{post}/information',[Home\Forum\PostController::class,'show'])->name('home.forum.post.show');
+        });
+
+        // Join and leave
+        Route::middleware('auth:user')->group(function()
+        {
+            Route::get('join',[Home\Forum\ForumController::class,'join']);
+            Route::get('leave',[Home\Forum\ForumController::class,'leave']);
         });
     });
 });

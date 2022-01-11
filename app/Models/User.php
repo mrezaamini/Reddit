@@ -18,4 +18,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Forum::class);
     }
+    public function joinedForums()
+    {
+        return $this->belongsToMany(Forum::class,'forum_user_join','user_id');
+    }
+    public function isJoinedForum($forum)
+    {
+        return $this->joinedForums()->where('forum_id',$forum->id)->exists();
+    }
 }

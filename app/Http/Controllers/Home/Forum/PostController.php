@@ -12,4 +12,8 @@ class PostController extends Controller
     {
         dd($forum);
     }
+    public function show(Forum $forum)
+    {
+        dd($forum);
+    }
 }
