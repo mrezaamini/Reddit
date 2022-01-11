@@ -120,6 +120,7 @@ header{
             }
         }
         .footer{
+            .clearFix();
             margin-top: 15px;
             a{
                 display: inline-block;
@@ -128,6 +129,62 @@ header{
                 font-size: 14px;
                 padding: 15px;
                 border-radius: 6px;
+            }
+            .profile{
+                .clearFix();
+                float: right;
+                .avatar,.name{
+                    display: inline-block;
+                    float: right;
+                }
+                .avatar{
+                    position: relative;
+                    z-index: 2;
+                    img{
+                        width: 60px;
+                        border-radius: 50%;
+                        border: 5px solid #d2d2d2;
+                    }
+                }
+                .name{
+                    z-index: 1;
+                    margin-top: 14px;
+                    margin-right: -10px;
+                    font-size: 14px;
+                    background: #d2d2d2;
+                    padding: 10px 15px 10px 10px;
+                    border-radius: 15px 0 0 15px;
+                }
+            }
+            .information{
+                margin-top: 10px;
+                float: left;
+                ul{
+                    li{
+                        display: inline-block;
+                        padding: 15px;
+                        border-radius: 20px;
+                        span{
+                            display: block;
+                            font-weight: 500;
+                        }
+                        &.primary{
+                            background: fade(.uiColors[primary],15);
+                            span{
+                                color: darken(.uiColors[primary],10);
+                            }
+                        }
+                        &.success{
+                            background: fade(.uiColors[success],15);
+                            span{
+                                color: darken(.uiColors[success],10);
+                            }
+                        }
+                        &:not(:last-child){
+                            margin-left: 10px;
+                        }
+                    }
+                }
             }
         }
     }

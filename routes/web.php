@@ -18,6 +18,18 @@ use App\Http\Controllers\{Account,Home};
 Route::prefix('/')->group(function()
 {
     Route::get('/',[Home\Forum\ForumController::class,'index']);
+    Route::prefix('{home_forum:slug}')->group(function()
+    {
+        Route::bind('home_forum',function($slug)
+        {
+            return \App\Models\Forum::where('slug','=',$slug)->firstOrFail();
+        });
+        Route::get('information',[Home\Forum\ForumController::class,'show']);
+        Route::prefix('post')->group(function()
+        {
+            Route::get('list',[Home\Forum\PostController::class,'index']);
+        });
+    });
 });
 
 // Account

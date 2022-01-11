@@ -16,7 +16,7 @@
                             </div>
                         </div>
                         <div class="footer">
-                            <a href="/{{$forum->slug}}"> ورود به انجمن </a>
+                            <a href="/{{$forum->slug}}/information"> ورود به انجمن </a>
                         </div>
                     </div>
                 </div>

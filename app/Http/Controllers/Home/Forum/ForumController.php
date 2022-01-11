@@ -14,4 +14,10 @@ class ForumController extends Controller
             'forums'=>Forum::get()
         ]);
     }
+    public function show(Forum $forum)
+    {
+        return view('home.forum.show',[
+            'forum'=>$forum
+        ]);
+    }
 }
