@@ -10,7 +10,17 @@
     </div>
     <div class="profile">
         <div class="avatar">
-            <img src="{{auth('user')->user()->avatar ? auth('user')->user()->avatar : asset('assets/construct/media/avatar.svg')}}" alt="">
+            <img src="{{auth('user')->user()->avatar ? Storage::disk('public_media')->url(auth('user')->user()->avatar) : asset('assets/construct/media/avatar.svg')}}" alt="">
+            <div class="change-avatar">
+                <div class="icon">
+                    <i class="far fa-camera"></i>
+                </div>
+                <form action="/account/user/setting/avatar" method="post" id="change-avatar" enctype="multipart/form-data">
+                    @csrf
+                    @method('patch')
+                    <input type="file" name="avatar">
+                </form>
+            </div>
         </div>
         <div class="information">
             <p>{{auth('user')->user()->name.' '.auth('user')->user()->surname}}</p>

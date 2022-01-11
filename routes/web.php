@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Account;
+use App\Http\Controllers\{Account,Home};
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +17,7 @@ use App\Http\Controllers\Account;
 // /
 Route::prefix('/')->group(function()
 {
-    Route::get('/',function()
-    {
-        dd(1);
-    });
+    Route::get('/',[Home\Forum\ForumController::class,'index']);
 });
 
 // Account
@@ -52,6 +49,12 @@ Route::prefix('account')->group(function()
 
         // Desk
         Route::get('desk',[Account\User\DeskController::class,'index'])->name('account.user.desk');
+
+        // Setting
+        Route::prefix('setting')->group(function()
+        {
+            Route::patch('avatar',[Account\User\Setting\AvatarController::class,'update']);
+        });
 
         // Forum
         Route::prefix('forum')->group(function()

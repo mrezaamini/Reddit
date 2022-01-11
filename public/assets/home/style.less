@@ -2,3 +2,133 @@ body{
     background: #fff;
     line-height: 1;
 }
+
+
+// Start header
+header{
+    .clearFix();
+    background: #f5f5f5;
+    padding: 15px;
+    border-bottom: 3px solid #b9b9b9;
+    .menu{
+        float: right;
+        form,ul{
+            display: inline-block;
+        }
+        form{
+            margin-right: 15px;
+            border-right: 3px solid #00000040;
+            padding-right: 20px;
+            input{
+                background: #d7d7d7;
+                border: none;
+                font-family: 'irSans';
+                border-radius: 6px;
+                padding: 0 10px;
+                outline: none;
+                height: 35px;
+                width: 225px;
+            }
+            button{
+                background: #303030;
+                color: #fff;
+                border-radius: 6px;
+                border: none;
+                height: 35px;
+                width: 35px;
+                text-align: center;
+                cursor: pointer;
+                transition: all ease 0.2s;
+                margin-right: 5px;
+                i{
+                    vertical-align: middle;
+                    font-size: 18px;
+                }
+                &:hover{
+                    background: #d7d7d7;
+                    color: #252525;
+                }
+            }
+        }
+        ul{
+            li{
+                display: inline-block;
+                a{
+                    display: block;
+                    padding: 15px;
+                    color: #252525;
+                    font-weight: 500;
+                    transition: all ease 0.2s;
+                    border-radius: 6px;
+                    &:hover{
+                        background: #00000015;
+                        opacity: 0.6;
+                    }
+                }
+            }
+        }
+    }
+    .account{
+        float: left;
+        a{
+            display: inline-block;
+            padding: 15px;
+            border-radius: 6px;
+            &:first-child{
+                background: .uiColors[warning];
+                color: #252525;
+            }
+            &:last-child{
+                background: .uiColors[primary];
+                color: #fff;
+            }
+            &:not(:first-child){
+                margin-right: 15px;
+            }
+        }
+    }
+}
+
+// Start content
+.content{
+    padding: 100px 0;
+
+    // Start card
+    .card{
+        .disableTextSelect();
+        padding: 40px 50px;
+        background: #f0f0f0;
+        border-radius: 20px;
+        .header{
+            .title{
+                h6{
+                    .hiddenText(100%);
+                    line-height: 2;
+                    margin-top: -5px;
+                }
+            }
+        }
+        .body{
+            margin-top: 10px;
+            .demo{
+                p{
+                    text-align: justify;
+                    font-size: 14px;
+                    line-height: 1.5;
+                    color: #00000090;
+                }
+            }
+        }
+        .footer{
+            margin-top: 15px;
+            a{
+                display: inline-block;
+                background: .uiColors[warning];
+                color: #252525;
+                font-size: 14px;
+                padding: 15px;
+                border-radius: 6px;
+            }
+        }
+    }
+}
