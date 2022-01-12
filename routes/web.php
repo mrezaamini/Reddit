@@ -94,12 +94,58 @@ Route::prefix('account')->group(function()
             {
                 Route::bind('user_forum',function($id)
                 {
-                    return auth('user')->user()->forums()->findOrFail($id);
+                    $forum=\App\Models\Forum::findOrFail($id);
+                    if(
+                        auth('user')->user()->isForumAdmin($forum) ||
+                        $forum->user->id==auth('user')->id()
+                    )
+                    {
+                        return $forum;
+                    }else{
+                        return abort(404);
+                    }
                 });
                 Route::prefix('edit')->group(function()
                 {
                     Route::get('/',[Account\User\ForumController::class,'edit'])->name('account.user.forum.edit');
                     Route::post('/',[Account\User\ForumController::class,'update']);
+                });
+                Route::prefix('information')->group(function()
+                {
+                    Route::get('/',[Account\User\ForumController::class,'show'])->name('account.user.forum.show');
+                    Route::get('user/{user}/change-admin',[Account\User\ForumController::class,'changeAdmin']);
+                });
+            });
+        });
+
+        // Post
+        Route::prefix('post')->group(function()
+        {
+            Route::get('list',[Account\User\PostController::class,'index'])->name('account.user.post.index');
+            Route::prefix('add')->group(function()
+            {
+                Route::get('/',[Account\User\PostController::class,'create'])->name('account.user.post.create');
+                Route::post('/',[Account\User\PostController::class,'store']);
+            });
+            Route::prefix('{user_post}')->group(function()
+            {
+                Route::bind('user_post',function($id)
+                {
+                    $post=\App\Models\Post::findOrFail($id);
+                    if(
+                        $post->user->id==auth('user')->id() ||
+                        $post->forum->isUserIsAdmin(auth('user')->user()) ||
+                        $post->forum->user->id==auth('user')->id()
+                    ){
+                        return $post;
+                    }else{
+                        return abort(404);
+                    }
+                });
+                Route::prefix('edit')->group(function()
+                {
+                    Route::get('/',[Account\User\PostController::class,'edit'])->name('account.user.post.edit');
+                    Route::post('/',[Account\User\PostController::class,'update']);
                 });
             });
         });

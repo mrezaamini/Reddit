@@ -24,4 +24,16 @@ class Forum extends Model
     {
         return $this->joinedUsers()->where('user_id',$user->id)->exists();
     }
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+    public function admins()
+    {
+        return $this->belongsToMany(User::class,'forum_user_admin','forum_id');
+    }
+    public function isUserIsAdmin($user)
+    {
+        return $this->admins()->where('user_id',$user->id)->exists();
+    }
 }

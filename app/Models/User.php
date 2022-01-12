@@ -26,4 +26,20 @@ class User extends Authenticatable
     {
         return $this->joinedForums()->where('forum_id',$forum->id)->exists();
     }
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+    public function forumsPosts()
+    {
+        return $this->hasManyThrough(Post::class,Forum::class);
+    }
+    public function forumsAdmin()
+    {
+        return $this->belongsToMany(Forum::class,'forum_user_admin','user_id');
+    }
+    public function isForumAdmin($forum)
+    {
+        return $this->forumsAdmin()->where('forum_id',$forum->id)->exists();
+    }
 }

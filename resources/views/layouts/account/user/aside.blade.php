@@ -59,6 +59,18 @@
                     </div>
                 </div>
             </li>
+            <li>
+                <div class="dropdown">
+                    <div class="text">
+                        <i class="fal fa-file-alt"></i>
+                        <p> پست </p>
+                    </div>
+                    <div class="item">
+                        <a href="/account/user/post/add"> ایجاد </a>
+                        <a href="/account/user/post/list"> مدیریت </a>
+                    </div>
+                </div>
+            </li>
         </ul>
     </div>
 </aside>
