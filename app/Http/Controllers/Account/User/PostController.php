@@ -28,7 +28,7 @@ class PostController extends Controller
         // Create post
         auth('user')->user()->posts()->create([
             'title'=>$request->title,
-            'content'=>$request->content,
+            'content'=>$request->post_content,
             'forum_id'=>$request->forum_id
         ]);
 
@@ -53,5 +53,13 @@ class PostController extends Controller
         ]);
 
         return redirect()->route('account.user.post.index')->with('success',['پست '.$request->title.' با موفقیت ویرایش شد']);
+    }
+
+    public function delete(Post $post)
+    {
+        // Delete post
+        $post->delete();
+
+        return redirect()->route('account.user.post.index')->with('success',['درخواست شما با موفقیت انجام شد']);
     }
 }

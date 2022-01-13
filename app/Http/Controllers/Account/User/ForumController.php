@@ -44,24 +44,12 @@ class ForumController extends Controller
 
     public function edit(Forum $forum)
     {;
-        // Check owner
-        if($forum->user->id!=auth('user')->id())
-        {
-            return abort(404);
-        }
-
         return view('account.user.forum.edit',[
             'forum'=>$forum
         ]);
     }
     public function update(UpdateRequest $request,Forum $forum)
     {
-        // Check owner
-        if($forum->user->id!=auth('user')->id())
-        {
-            return abort(404);
-        }
-
         // edit forum
         $forum->update([
             'title'=>$request->title,

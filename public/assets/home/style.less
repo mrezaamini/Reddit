@@ -5,6 +5,37 @@ body{
 
 
 // Start header
+.ckeditor-content{
+    line-height: 2;
+    h1{
+        font-size: 25px !important;
+    }
+    h2{
+        font-size: 22px !important;
+    }
+    h3{
+        font-size: 20px !important;
+    }
+    h4{
+        font-size: 18px !important;
+    }
+    h5{
+        font-size: 17px !important;
+    }
+    h6{
+        font-size: 16px !important;
+    }
+    strong{
+        font-weight: bold !important;
+    }
+    p{
+        margin: 6px 0;
+    }
+    ul{
+        margin-right: 35px;
+        list-style: disc;
+    }
+}
 header{
     .clearFix();
     background: #f5f5f5;
@@ -139,7 +170,7 @@ header{
         .footer{
             .clearFix();
             margin-top: 15px;
-            a{
+            > a{
                 display: inline-block;
                 background: .uiColors[warning];
                 color: #252525;
@@ -197,6 +228,12 @@ header{
                                 color: darken(.uiColors[success],10);
                             }
                         }
+                        &.danger{
+                            background: fade(.uiColors[danger],15);
+                            span{
+                                color: darken(.uiColors[danger],10);
+                            }
+                        }
                         &:not(:last-child){
                             margin-left: 10px;
                         }
@@ -205,4 +242,37 @@ header{
             }
         }
     }
+
+    // Start like and dis like
+    .like{
+        margin-top: 15px;
+        a{
+            display: inline-block;
+            width: 35px;
+            text-align: center;
+            height: 35px;
+            line-height: 35px;
+            border-radius: 4px;
+            margin-left: 5px;
+            i{
+                vertical-align: middle;
+                font-size: 20px;
+            }
+            &:first-child{
+                color: darken(.uiColors[success],10);
+                background: fade(.uiColors[success],15);
+            }
+            &:last-child{
+                color: darken(.uiColors[warning],10);
+                background: fade(.uiColors[warning],15);
+            }
+        }
+        &.disabled{
+            opacity: 0.4;
+            a{
+                cursor: no-drop;
+            }
+        }
+    }
+
 }

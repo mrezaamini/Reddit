@@ -30,10 +30,21 @@ Route::prefix('/')->group(function()
         Route::get('information',[Home\Forum\ForumController::class,'show'])->name('home.forum.show');
 
         // Posts
-        Route::prefix('post')->group(function()
+        Route::prefix('{home_post}')->group(function()
         {
-            Route::get('list',[Home\Forum\PostController::class,'index'])->name('home.forum.post.index');
-            Route::get('{post}/information',[Home\Forum\PostController::class,'show'])->name('home.forum.post.show');
+            // Bind
+            Route::bind('home_post',function($id)
+            {
+                $forum=\Illuminate\Support\Facades\Request::route('home_forum');
+                return $forum->posts()->findOrFail($id);
+            });
+
+            Route::get('information',[Home\Forum\PostController::class,'show'])->name('home.forum.post.show');
+            Route::middleware('auth:user')->group(function()
+            {
+                Route::get('like',[Home\Forum\PostController::class,'like']);
+                Route::get('dislike',[Home\Forum\PostController::class,'dislike']);
+            });
         });
 
         // Join and leave
@@ -147,6 +158,7 @@ Route::prefix('account')->group(function()
                     Route::get('/',[Account\User\PostController::class,'edit'])->name('account.user.post.edit');
                     Route::post('/',[Account\User\PostController::class,'update']);
                 });
+                Route::delete('delete',[Account\User\PostController::class,'delete']);
             });
         });
     });

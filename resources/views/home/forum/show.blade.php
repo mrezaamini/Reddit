@@ -43,11 +43,35 @@
                             <span>{{$forum->joinedUsers()->count()+1}} عضو </span>
                         </li>
                         <li class="success">
-                            <span> ۲۶ پست </span>
+                            <span>{{$forum->posts()->count()}}</span>
                         </li>
                     </ul>
                 </div>
             </div>
+        </div>
+        <br><br>
+        <div class="row">
+            @foreach($forum->posts as $post)
+                <div class="col-4">
+                    <br>
+                    <div class="card">
+                        <div class="header">
+                            <div class="title">
+                                <h6>{{$post->title}}</h6>
+                            </div>
+                        </div>
+                        <div class="body">
+                            <div class="demo">
+                                <p>{{Str::limit(strip_tags($post->content),250)}}</p>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <a href="/{{$forum->slug}}/{{$post->id}}/information"> اطلاعات بیشتر </a>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            @endforeach
         </div>
     </div>
 @endsection

@@ -18,7 +18,7 @@
     <div class="container">
         <div class="menu">
             <ul>
-                <li><a href="#"> انجمن </a></li>
+                <li><a href="/"> انجمن </a></li>
             </ul>
             <form method="post">
                 @csrf
