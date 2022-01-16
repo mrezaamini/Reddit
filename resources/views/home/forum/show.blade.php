@@ -43,7 +43,7 @@
                             <span>{{$forum->joinedUsers()->count()+1}} عضو </span>
                         </li>
                         <li class="success">
-                            <span>{{$forum->posts()->count()}}</span>
+                            <span>{{$forum->posts()->count()}} پست </span>
                         </li>
                     </ul>
                 </div>

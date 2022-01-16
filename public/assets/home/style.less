@@ -124,6 +124,49 @@ header{
 .content{
     padding: 100px 0;
 
+    form{
+        padding-top: 30px;
+        margin-top: 15px;
+        border-top: 1px dashed #00000020;
+        textarea{
+            display: block;
+            width: 100%;
+            min-width: 100%;
+            border: none;
+            box-sizing : border-box;
+            font-family: 'irSans';
+            border: 1px solid #ededed;
+            background: #fff;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 100%;
+            line-height: 1.4;
+            font-size: 14px !important;
+            padding: 11px 15px;
+            color: #252525;
+            border: none;
+            outline: none;
+            transition: all ease 0.2s;
+            &:focus{
+                outline: none;
+                border: none;
+                box-shadow: 0 0 0 3px rgba(0,0,0,0.1);
+            }
+        }
+        button{
+            margin-top: 25px;
+            background: .uiColors[primary];
+            color: #fff;
+            padding: 15px;
+            line-height: 1;
+            border-radius: 4px;
+            border: none;
+            outline: none;
+            display: inline-block;
+            cursor: pointer;
+        }
+    }
+
     // Start card
     .card{
         .disableTextSelect();
@@ -263,8 +306,8 @@ header{
                 background: fade(.uiColors[success],15);
             }
             &:last-child{
-                color: darken(.uiColors[warning],10);
-                background: fade(.uiColors[warning],15);
+                color: darken(.uiColors[danger],10);
+                background: fade(.uiColors[danger],15);
             }
         }
         &.disabled{
@@ -275,4 +318,91 @@ header{
         }
     }
 
+}
+
+.comments{
+    margin-top: 100px;
+    ul{
+        li{
+            display: block;
+            margin-bottom: 25px;
+            .body{
+                display: flex;
+                .text,.profile{
+                    flex: 1;
+                }
+                .profile{
+                    max-width: 75px;
+                    img{
+                        width: 100%;
+                        border-radius: 50%;
+                    }
+                }
+                .text{
+                    background: #00000008;
+                    margin-right: 15px;
+                    border-radius: 10px;
+                    padding: 25px;
+                    p{
+                        line-height: 2;
+                        font-size: 12px;
+                        font-weight: 500;
+                    }
+                    .information{
+                        .clearFix();
+                        margin-top: 15px;
+                        .icon{
+                            float: right;
+                            a{
+                                display: inline-block;
+                                min-width: 30px;
+                                height: 30px;
+                                text-align: center;
+                                line-height: 30px;
+                                padding: 0 10px;
+                                border-radius: 4px;
+                                cursor: pointer;
+                                span{
+                                    margin-left: 5px;
+                                    font-weight: 500;
+                                }
+                                i{
+                                    vertical-align: middle;
+                                }
+                                &.like{
+                                    color: darken(.uiColors[success],10);
+                                    background: fade(.uiColors[success],15);
+                                }
+                                &.dislike{
+                                    color: darken(.uiColors[danger],10);
+                                    background: fade(.uiColors[danger],15);
+                                }
+                                &.reply{
+                                    color: darken(.uiColors[primary],10);
+                                    background: fade(.uiColors[primary],15);
+                                }
+                            }
+                        }
+                        .time{
+                            float: left;
+                            margin-top: 15px;
+                            p{
+                                color: #00000080;
+                                font-weight: 500;
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                    form{
+                        display: none;
+                    }
+                }
+                .body{
+                    padding-top: 30px;
+                    margin-top: 30px;
+                    border-top: 1px dashed #00000020;
+                }
+            }
+        }
+    }
 }

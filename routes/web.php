@@ -44,6 +44,18 @@ Route::prefix('/')->group(function()
             {
                 Route::get('like',[Home\Forum\PostController::class,'like']);
                 Route::get('dislike',[Home\Forum\PostController::class,'dislike']);
+                Route::prefix('comment')->group(function()
+                {
+                    Route::post('/',[Home\Forum\CommentController::class,'store']);
+
+                    Route::bind('post_comment',function($id)
+                    {
+                        $post=\Illuminate\Support\Facades\Request::route('home_post');
+                        return $post->comments()->findOrFail($id);
+                    });
+                    Route::get('{post_comment}/like',[Home\Forum\CommentController::class,'like']);
+                    Route::get('{post_comment}/dislike',[Home\Forum\CommentController::class,'dislike']);
+                });
             });
         });
 

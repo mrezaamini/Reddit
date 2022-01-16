@@ -31,7 +31,7 @@
                     @foreach($ownedForums as $forum)
                         <tr>
                             <td>{{$loop->iteration}}</td>
-                            <td><a href="/{{$forum->slug}}">{{$forum->title}}</a></td>
+                            <td><a href="/{{$forum->slug}}/information">{{$forum->title}}</a></td>
                             <td><span class="label label-primary bg-reverse">{{count(json_decode($forum->category))}}</span></td>
                             <td><span class="label label-success bg-reverse">{{$forum->joinedUsers()->count()+1}}</span></td>
                             <td><span class="label label-warning bg-reverse">{{$forum->posts()->count()}}</span></td>
@@ -76,7 +76,7 @@
                     @foreach($forumsAdmin as $forum)
                         <tr>
                             <td>{{$loop->iteration}}</td>
-                            <td><a href="/{{$forum->slug}}">{{$forum->title}}</a></td>
+                            <td><a href="/{{$forum->slug}}/information">{{$forum->title}}</a></td>
                             <td><span class="label label-primary bg-reverse">{{count(json_decode($forum->category))}}</span></td>
                             <td><span class="label label-success bg-reverse">{{$forum->joinedUsers()->count()+1}}</span></td>
                             <td><span class="label label-warning bg-reverse">{{$forum->posts()->count()}}</span></td>

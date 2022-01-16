@@ -27,7 +27,7 @@
                             @foreach($forum->posts as $post)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td><a href="/{{$post->forum->slug}}/{{$post->id}}">{{$post->title}}</a></td>
+                                    <td><a href="/{{$post->forum->slug}}/{{$post->id}}/information">{{$post->title}}</a></td>
                                     <td><span class="label label-success bg-reverse">{{$post->usersLike()->count()}}</span></td>
                                     <td><span class="label label-danger bg-reverse">{{$post->usersDislike()->count()}}</span></td>
                                     <td><span class="label label-default">{{verta($post->created_at)->format('d %B Y')}}</span></td>

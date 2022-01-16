@@ -38,6 +38,11 @@
                     </ul>
                 </div>
             </div>
+            <form action="/{{$post->forum->slug}}/{{$post->id}}/comment" method="post">
+                @csrf
+                <textarea placeholder="متن کامنت" name="text" rows="4"></textarea>
+                <button> ثبت کامنت </button>
+            </form>
         </div>
         @if(auth('user')->check())
             <div class="like">
@@ -58,5 +63,69 @@
                 <a href="#"><i class="far fa-heart-broken"></i></a>
             </div>
         @endif
+
+        <div class="comments">
+            <ul>
+                @foreach($post->comments()->where('comment_id','=',null)->get() as $comment)
+                    <li>
+                        <div class="body">
+                            <div class="profile">
+                                <img src="{{$comment->user->avatar ? Storage::disk('public_media')->url($comment->user->avatar) : asset('assets/construct/media/avatar.svg')}}">
+                            </div>
+                            <div class="text">
+                                <p>{{$comment->text}}</p>
+                                <div class="information">
+                                    <div class="icon">
+                                        <a href="/{{$post->forum->slug}}/{{$post->id}}/comment/{{$comment->id}}/like" class="like"><span>{{$comment->usersLike()->count()}}</span><i class="far fa-heart"></i></a>
+                                        <a href="/{{$post->forum->slug}}/{{$post->id}}/comment/{{$comment->id}}/dislike" class="dislike"><span>{{$comment->usersDislike()->count()}}</span><i class="far fa-heart-broken"></i></a>
+                                        @if(!$comment->reply)
+                                            <a href="javascript:void();" class="reply"><i class="far fa-reply"></i></a>
+                                        @endif
+                                    </div>
+                                    <div class="time">
+                                        <p>{{verta($comment->created_at)->format('d %B Y ساعت H:i')}}</p>
+                                    </div>
+                                </div>
+                                @if(!$comment->reply)
+                                    <form action="/{{$post->forum->slug}}/{{$post->id}}/comment" method="post">
+                                        @csrf
+                                        <textarea placeholder="متن کامنت" name="text" rows="4"></textarea>
+                                        <input type="hidden" name="comment_id" value="{{$comment->id}}">
+                                        <button> ثبت کامنت </button>
+                                    </form>
+                                @else
+                                    @php($comment=$comment->reply)
+                                    <div class="body">
+                                        <div class="profile">
+                                            <img src="{{$comment->user->avatar ? Storage::disk('public_media')->url($comment->user->avatar) : asset('assets/construct/media/avatar.svg')}}">
+                                        </div>
+                                        <div class="text">
+                                            <p>{{$comment->text}}</p>
+                                            <div class="information">
+                                                <div class="icon">
+                                                    <a href="/{{$post->forum->slug}}/{{$post->id}}/comment/{{$comment->id}}/like" class="like"><span>{{$comment->usersLike()->count()}}</span><i class="far fa-heart"></i></a>
+                                                    <a href="/{{$post->forum->slug}}/{{$post->id}}/comment/{{$comment->id}}/dislike" class="dislike"><span>{{$comment->usersDislike()->count()}}</span><i class="far fa-heart-broken"></i></a>
+                                                </div>
+                                                <div class="time">
+                                                    <p>{{verta($comment->created_at)->format('d %B Y ساعت H:i')}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
     </div>
+@endsection
+@section('script')
+    <script>
+        $('.comments .information .icon a.reply').click(function()
+        {
+            $(this).closest('.text').find('form').toggle()
+        })
+    </script>
 @endsection

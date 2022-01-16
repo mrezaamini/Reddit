@@ -5,24 +5,28 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Comment extends Model
 {
     use HasFactory;
     protected $guarded=[
         'id','created_at','updated_at'
     ];
 
+    public function post()
+    {
+        return $this->belongsTo(Post::class);
+    }
+    public function reply()
+    {
+        return $this->hasOne(Comment::class,'comment_id');
+    }
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-    public function forum()
-    {
-        return $this->belongsTo(Forum::class);
-    }
     public function usersLike()
     {
-        return $this->belongsToMany(User::class,'post_user_like','post_id');
+        return $this->belongsToMany(User::class,'comment_user_like','comment_id');
     }
     public function isUserLike($user)
     {
@@ -30,14 +34,10 @@ class Post extends Model
     }
     public function usersDislike()
     {
-        return $this->belongsToMany(User::class,'post_user_dislike','post_id');
+        return $this->belongsToMany(User::class,'comment_user_dislike','comment_id');
     }
     public function isUserDislike($user)
     {
         return $this->usersDislike()->where('user_id',$user->id)->exists();
-    }
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
     }
 }
