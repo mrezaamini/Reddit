@@ -1,6 +1,11 @@
 @extends('layouts.home.main')
 @section('content')
     <div class="container">
+        @if(auth('user')->check() && auth('user')->user()->isForumBlock($forum))
+            <div class="danger-block">
+                <p> شما در این انجمن بلاک شده اید و فعالیت شما محدود شده است </p>
+            </div>
+        @endif
         <div class="card">
             <div class="header">
                 <div class="title">
@@ -47,14 +52,19 @@
         @if(auth('user')->check())
             <div class="like">
                 @if($post->isUserLike(auth('user')->user()))
-                    <a href="/{{$forum->slug}}/{{$post->id}}/like"><i class="fas fa-heart"></i></a>
+                    <a href="/{{$forum->slug}}/{{$post->id}}/like" class="success"><i class="fas fa-heart"></i></a>
                 @else
-                    <a href="/{{$forum->slug}}/{{$post->id}}/like"><i class="far fa-heart"></i></a>
+                    <a href="/{{$forum->slug}}/{{$post->id}}/like" class="success"><i class="far fa-heart"></i></a>
                 @endif
                 @if($post->isUserDislike(auth('user')->user()))
-                    <a href="/{{$forum->slug}}/{{$post->id}}/dislike"><i class="fas fa-heart-broken"></i></a>
+                    <a href="/{{$forum->slug}}/{{$post->id}}/dislike" class="danger"><i class="fas fa-heart-broken"></i></a>
                 @else
-                    <a href="/{{$forum->slug}}/{{$post->id}}/dislike"><i class="far fa-heart-broken"></i></a>
+                    <a href="/{{$forum->slug}}/{{$post->id}}/dislike" class="danger"><i class="far fa-heart-broken"></i></a>
+                @endif
+                @if($post->isUserSave(auth('user')->user()))
+                    <a href="/{{$forum->slug}}/{{$post->id}}/save" class="warning"><i class="fas fa-archive"></i></a>
+                @else
+                    <a href="/{{$forum->slug}}/{{$post->id}}/save" class="warning"><i class="far fa-archive"></i></a>
                 @endif
             </div>
         @else

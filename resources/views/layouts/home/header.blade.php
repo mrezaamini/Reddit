@@ -20,7 +20,7 @@
             <ul>
                 <li><a href="/"> انجمن </a></li>
             </ul>
-            <form method="post">
+            <form method="get" action="/search">
                 @csrf
                 <input type="text" name="keyword" autocomplete="off">
                 <button><i class="fal fa-search"></i></button>

@@ -89,6 +89,15 @@
                                                         <a href="/account/user/forum/{{$forum->id}}/information/user/{{$user->id}}/change-admin"><i class="far fa-check"></i></a>
                                                     </li>
                                                 @endif
+                                                @if($user->isForumBlock($forum))
+                                                    <li class="balloon" balloon-position="right" balloon-text="فعال سازی (آنبلاک)">
+                                                        <a href="/account/user/forum/{{$forum->id}}/information/user/{{$user->id}}/change-block"><i class="far fa-lock-open"></i></a>
+                                                    </li>
+                                                @else
+                                                    <li class="balloon" balloon-position="right" balloon-text="غیر فعال سازی (بلاک)">
+                                                        <a href="/account/user/forum/{{$forum->id}}/information/user/{{$user->id}}/change-block"><i class="far fa-lock"></i></a>
+                                                    </li>
+                                                @endif
                                             </ul>
                                         </td>
                                     @endif

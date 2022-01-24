@@ -3,7 +3,19 @@ body{
     line-height: 1;
 }
 
-
+.danger-block{
+    background: fade(.uiColors[danger],15);
+    border: 2px dashed fade(.uiColors[danger],45);
+    padding: 20px;
+    border-radius: 25px;
+    p{
+        display: block;
+        text-align: center;
+        color: .uiColors[danger];
+        font-weight: 500;
+    }
+    margin-bottom: 25px;
+}
 // Start header
 .ckeditor-content{
     line-height: 2;
@@ -301,13 +313,17 @@ header{
                 vertical-align: middle;
                 font-size: 20px;
             }
-            &:first-child{
+            &.success{
                 color: darken(.uiColors[success],10);
                 background: fade(.uiColors[success],15);
             }
-            &:last-child{
+            &.danger{
                 color: darken(.uiColors[danger],10);
                 background: fade(.uiColors[danger],15);
+            }
+            &.warning{
+                color: darken(.uiColors[warning],10);
+                background: fade(.uiColors[warning],15);
             }
         }
         &.disabled{

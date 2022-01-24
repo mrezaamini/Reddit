@@ -62,28 +62,59 @@ class ForumController extends Controller
         return redirect()->route('account.user.forum.index')->with('success',['انجمن '.$request->title.' با موفقیت ویرایش شد']);
     }
 
-    public function changeAdmin(Forum $forum,User $user)
-    {
-        // Check owner
-        if($forum->user->id!=auth('user')->id())
-        {
-            return abort(404);
-        }
+	public function changeAdmin(Forum $forum,User $user)
+	{
+		// Check owner
+		if($forum->user->id!=auth('user')->id())
+		{
+			return abort(404);
+		}
 
-        // Check if user is joined forum
-        if(!$user->isJoinedForum($forum))
-        {
-            return abort(404);
-        }
+		// Check if user is joined forum
+		if(!$user->isJoinedForum($forum))
+		{
+			return abort(404);
+		}
 
-        // Check if admin
-        if(!$user->isForumAdmin($forum))
-        {
-            $forum->admins()->attach($user);
-        }else{
-            $forum->admins()->detach($user);
-        }
+		// Check if admin
+		if(!$user->isForumAdmin($forum))
+		{
+			$forum->admins()->attach($user);
+		}else{
+			$forum->admins()->detach($user);
+		}
 
-        return redirect()->route('account.user.forum.show',$forum->id)->with('success',['درخواست شما با موفقیت انجام شد']);
-    }
+		return redirect()->route('account.user.forum.show',$forum->id)->with('success',['درخواست شما با موفقیت انجام شد']);
+	}
+
+	public function changeBlock(Forum $forum,User $user)
+	{
+		// Check owner
+		if($forum->user->id!=auth('user')->id())
+		{
+			return abort(404);
+		}
+
+		// Check if user is joined forum
+		if(!$user->isJoinedForum($forum))
+		{
+			return abort(404);
+		}
+
+		// Check if admin
+		if(!$user->isForumAdmin($forum))
+		{
+			return abort(404);
+		}
+
+		// Block
+		if(!$user->isForumBlock($forum))
+		{
+			$forum->blocks()->attach($user);
+		}else{
+			$forum->blocks()->detach($user);
+		}
+
+		return redirect()->route('account.user.forum.show',$forum->id)->with('success',['درخواست شما با موفقیت انجام شد']);
+	}
 }

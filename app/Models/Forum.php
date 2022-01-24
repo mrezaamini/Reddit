@@ -28,12 +28,20 @@ class Forum extends Model
     {
         return $this->hasMany(Post::class);
     }
-    public function admins()
-    {
-        return $this->belongsToMany(User::class,'forum_user_admin','forum_id');
-    }
-    public function isUserIsAdmin($user)
-    {
-        return $this->admins()->where('user_id',$user->id)->exists();
-    }
+	public function admins()
+	{
+		return $this->belongsToMany(User::class,'forum_user_admin','forum_id');
+	}
+	public function isUserIsAdmin($user)
+	{
+		return $this->admins()->where('user_id',$user->id)->exists();
+	}
+	public function blocks()
+	{
+		return $this->belongsToMany(User::class,'forum_user_block','forum_id');
+	}
+	public function isUserIsBlock($user)
+	{
+		return $this->blocks()->where('user_id',$user->id)->exists();
+	}
 }

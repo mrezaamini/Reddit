@@ -28,14 +28,22 @@ class Post extends Model
     {
         return $this->usersLike()->where('user_id',$user->id)->exists();
     }
-    public function usersDislike()
-    {
-        return $this->belongsToMany(User::class,'post_user_dislike','post_id');
-    }
-    public function isUserDislike($user)
-    {
-        return $this->usersDislike()->where('user_id',$user->id)->exists();
-    }
+	public function usersDislike()
+	{
+		return $this->belongsToMany(User::class,'post_user_dislike','post_id');
+	}
+	public function isUserDislike($user)
+	{
+		return $this->usersDislike()->where('user_id',$user->id)->exists();
+	}
+	public function usersSave()
+	{
+		return $this->belongsToMany(User::class,'post_user_save','post_id');
+	}
+	public function isUserSave($user)
+	{
+		return $this->usersSave()->where('user_id',$user->id)->exists();
+	}
     public function comments()
     {
         return $this->hasMany(Comment::class);

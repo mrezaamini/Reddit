@@ -44,6 +44,7 @@ Route::prefix('/')->group(function()
             {
                 Route::get('like',[Home\Forum\PostController::class,'like']);
                 Route::get('dislike',[Home\Forum\PostController::class,'dislike']);
+                Route::get('save',[Home\Forum\PostController::class,'save']);
                 Route::prefix('comment')->group(function()
                 {
                     Route::post('/',[Home\Forum\CommentController::class,'store']);
@@ -66,6 +67,7 @@ Route::prefix('/')->group(function()
             Route::get('leave',[Home\Forum\ForumController::class,'leave']);
         });
     });
+    Route::get('search',[Home\SearchController::class,'index'])->name('home.search');
 });
 
 // Account
@@ -137,6 +139,7 @@ Route::prefix('account')->group(function()
                 {
                     Route::get('/',[Account\User\ForumController::class,'show'])->name('account.user.forum.show');
                     Route::get('user/{user}/change-admin',[Account\User\ForumController::class,'changeAdmin']);
+                    Route::get('user/{user}/change-block',[Account\User\ForumController::class,'changeBlock']);
                 });
             });
         });

@@ -12,6 +12,12 @@ class CommentController extends Controller
 {
     public function store(Request $request,Forum $forum,Post $post)
     {
+    	// Check if block
+        if(auth('user')->user()->isForumBlock($forum))
+		{
+			return redirect()->route('home.forum.post.show',[$forum->slug,$post->id])->withErrors(['شما توسط مدیر انجمن محدود شده اید و امکان انجام این درخواست وجود ندارد']);
+		}
+
         if(!$request->text)
         {
             return redirect()->route('home.forum.post.show',[$forum->slug,$post->id])->withErrors('کامنت شما باید دارای متن باشد');
@@ -28,6 +34,12 @@ class CommentController extends Controller
 
     public function like(Forum $forum,Post $post,Comment $comment)
     {
+    	// Check if block
+        if(auth('user')->user()->isForumBlock($forum))
+		{
+			return redirect()->route('home.forum.post.show',[$forum->slug,$post->id])->withErrors(['شما توسط مدیر انجمن محدود شده اید و امکان انجام این درخواست وجود ندارد']);
+		}
+
         // Detach dislike
         $comment->usersDislike()->detach(auth('user')->id());
 
@@ -42,6 +54,12 @@ class CommentController extends Controller
     }
     public function dislike(Forum $forum,Post $post,Comment $comment)
     {
+    	// Check if block
+        if(auth('user')->user()->isForumBlock($forum))
+		{
+			return redirect()->route('home.forum.post.show',[$forum->slug,$post->id])->withErrors(['شما توسط مدیر انجمن محدود شده اید و امکان انجام این درخواست وجود ندارد']);
+		}
+
         // Detach like
         $comment->usersLike()->detach(auth('user')->id());
 
