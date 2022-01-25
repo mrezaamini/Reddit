@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home\Forum;
 
 use App\Http\Controllers\Controller;
 use App\Models\Forum;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ForumController extends Controller
@@ -11,7 +12,13 @@ class ForumController extends Controller
     public function index()
     {
         return view('home.forum.index',[
-            'forums'=>Forum::get()
+            'forums'=>Forum::get(),
+	        'hotForums'=>Forum::withCount([
+		        'posts'=>function($query)
+		        {
+			        return $query->whereDate('created_at',Carbon::today());
+		        }
+	        ])->orderBy('posts_count','DESC')->get()
         ]);
     }
     public function show(Forum $forum,Request $request)
