@@ -1,6 +1,17 @@
 @extends('layouts.home.main')
 @section('content')
     <div class="container">
+        <form action="" method="get" class="no">
+            <select name="orderBy">
+                <option value="0" {{Request::get('orderBy')=='0' ? 'selected' : ''}}> جدید به قدیم </option>
+                <option value="1" {{Request::get('orderBy')=='1' ? 'selected' : ''}}> قدیم به جدید </option>
+                <option value="2" {{Request::get('orderBy')=='2' ? 'selected' : ''}}> پر لایک ترین (نزولی) </option>
+                <option value="3" {{Request::get('orderBy')=='3' ? 'selected' : ''}}> پر لایک ترین (صعودی) </option>
+                <option value="4" {{Request::get('orderBy')=='4' ? 'selected' : ''}}> پر کامنت ترین (نزولی) </option>
+                <option value="5" {{Request::get('orderBy')=='5' ? 'selected' : ''}}> پر کامنت ترین (صعودی) </option>
+            </select>
+        </form>
+        <br><br><br>
         <div class="card">
             <div class="header">
                 <div class="title">
@@ -51,7 +62,7 @@
         </div>
         <br><br>
         <div class="row">
-            @foreach($forum->posts as $post)
+            @foreach($posts as $post)
                 <div class="col-4">
                     <br>
                     <div class="card">

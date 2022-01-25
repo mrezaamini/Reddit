@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <div class="col-6">
-                        <div class="input-mask required" mask-type="select:search" mask-label="عنوان به انگلیسی">
+                        <div class="input-mask required" mask-type="select:search" mask-label="انتخاب انجمن">
                             <select name="forum_id">
                                 @foreach($joinedForums as $forum)
                                     <option value="{{$forum->id}}" tool-bar="عضو" {{old('forum_id')==$forum->id ? 'selected' : ''}}>{{$forum->title}}</option>

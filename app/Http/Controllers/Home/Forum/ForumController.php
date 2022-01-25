@@ -14,10 +14,32 @@ class ForumController extends Controller
             'forums'=>Forum::get()
         ]);
     }
-    public function show(Forum $forum)
+    public function show(Forum $forum,Request $request)
     {
+    	switch($request->get('orderBy'))
+	    {
+		    case 0;
+			    $posts=$forum->posts()->orderBy('id','DESC')->get();;
+			    break;
+		    case 1;
+			    $posts=$forum->posts()->orderBy('id','ASC')->get();;
+			    break;
+		    case 2;
+			    $posts=$forum->posts()->withCount('usersLike')->orderBy('users_like_count','ASC')->get();;
+			    break;
+		    case 3;
+			    $posts=$forum->posts()->withCount('usersLike')->orderBy('users_like_count','DESC')->get();;
+			    break;
+		    case 4;
+			    $posts=$forum->posts()->withCount('usersComment')->orderBy('users_comment_count','ASC')->get();;
+			    break;
+		    case 5;
+			    $posts=$forum->posts()->withCount('usersComment')->orderBy('users_comment_count','DESC')->get();;
+			    break;
+	    }
         return view('home.forum.show',[
-            'forum'=>$forum
+            'forum'=>$forum,
+	        'posts'=>$posts
         ]);
     }
 
