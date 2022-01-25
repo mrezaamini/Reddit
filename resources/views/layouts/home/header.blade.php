@@ -11,7 +11,11 @@
     <link rel="stylesheet/less" type="text/css" href="{{asset('assets/home/app.less?version='.env('APP_VERSION'))}}">
     @yield('stylesheet')
 </head>
-<body>
+<body class="{{session('dark') && session('dark')==true ? 'dark' : ''}}">
+
+<a href="/dark" class="theme">
+    <i class="fas fa-moon"></i>
+</a>
 
 {{--Start header--}}
 <header>

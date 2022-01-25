@@ -31,10 +31,10 @@ class ForumController extends Controller
 			    $posts=$forum->posts()->withCount('usersLike')->orderBy('users_like_count','DESC')->get();;
 			    break;
 		    case 4;
-			    $posts=$forum->posts()->withCount('usersComment')->orderBy('users_comment_count','ASC')->get();;
+			    $posts=$forum->posts()->withCount('comments')->orderBy('comments_count','ASC')->get();;
 			    break;
 		    case 5;
-			    $posts=$forum->posts()->withCount('usersComment')->orderBy('users_comment_count','DESC')->get();;
+			    $posts=$forum->posts()->withCount('comments')->orderBy('comments_count','DESC')->get();;
 			    break;
 	    }
         return view('home.forum.show',[

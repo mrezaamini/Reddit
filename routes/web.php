@@ -68,6 +68,18 @@ Route::prefix('/')->group(function()
         });
     });
     Route::get('search',[Home\SearchController::class,'index'])->name('home.search');
+
+    Route::get('dark',function()
+    {
+    	if(session('dark'))
+	    {
+		    session(['dark'=>false]);
+	    }else{
+		    session(['dark'=>true]);
+	    }
+
+    	return redirect()->back();
+    });
 });
 
 // Account

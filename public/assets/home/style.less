@@ -430,3 +430,97 @@ select{
     padding: 10px;
     border-radius: 8px;
 }
+
+
+
+body.dark{
+    background: #252728;
+    border-bottom: 3px solid #b9b9b9;
+
+    header{
+        background: #1E2021;
+        border-color: #44494C;
+        ul{
+            li{
+                a{
+                    color: #dcdcdc;
+                }
+            }
+        }
+    }
+    select{
+        background: #363738;
+        color: #ededed;
+    }
+
+    .content{
+        .card{
+            background: #363738;
+            .header{
+                .title{
+                    h6{
+                        color: #ededed;
+                    }
+                }
+            }
+            .demo{
+                p{
+                    color: #ededed;
+                }
+            }
+            .profile{
+                .avatar{
+                    img{
+                        border-color: #252728;
+
+                    }
+                }
+                .name{
+                    background: #252728;
+                    p{
+                        color: #ededed;
+                    }
+                }
+            }
+        }
+    }
+    textarea{
+        background: #252525 !important;
+    }
+    .comments{
+        ul{
+            li{
+                .text{
+                    background: #00000030;
+                    p{
+                        color: #edededae !important;
+                    }
+                }
+            }
+        }
+    }
+
+    .theme{
+        background: #eee;
+        i{
+            color: #252525;
+        }
+    }
+}
+
+.theme{
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #252525;
+    text-align: center;
+    line-height: 50px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.1);
+    i{
+        color: #eee;
+        font-size: 30px;
+    }
+}
