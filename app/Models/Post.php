@@ -20,14 +20,22 @@ class Post extends Model
     {
         return $this->belongsTo(Forum::class);
     }
-    public function usersLike()
-    {
-        return $this->belongsToMany(User::class,'post_user_like','post_id');
-    }
-    public function isUserLike($user)
-    {
-        return $this->usersLike()->where('user_id',$user->id)->exists();
-    }
+	public function usersReport()
+	{
+		return $this->belongsToMany(User::class,'post_user_report','post_id')->withPivot('status');
+	}
+	public function isUserReport($user)
+	{
+		return $this->usersReport()->where('user_id',$user->id)->exists();
+	}
+	public function usersLike()
+	{
+		return $this->belongsToMany(User::class,'post_user_like','post_id');
+	}
+	public function isUserLike($user)
+	{
+		return $this->usersLike()->where('user_id',$user->id)->exists();
+	}
 	public function usersDislike()
 	{
 		return $this->belongsToMany(User::class,'post_user_dislike','post_id');

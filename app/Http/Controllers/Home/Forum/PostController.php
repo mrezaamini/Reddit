@@ -73,4 +73,15 @@ class PostController extends Controller
 
 		return redirect()->route('home.forum.post.show',[$forum->slug,$post->id])->with('success',['درخواست شما با موفقیت انجام شد']);
 	}
+	public function report(Forum $forum,Post $post)
+	{
+		if($post->isUserReport(auth('user')->user()))
+		{
+			$post->usersReport()->detach(auth('user')->id());
+		}else{
+			$post->usersReport()->attach(auth('user')->id());
+		}
+
+		return redirect()->route('home.forum.post.show',[$forum->slug,$post->id])->with('success',['درخواست شما با موفقیت انجام شد']);
+	}
 }

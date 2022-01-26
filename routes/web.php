@@ -45,6 +45,7 @@ Route::prefix('/')->group(function()
                 Route::get('like',[Home\Forum\PostController::class,'like']);
                 Route::get('dislike',[Home\Forum\PostController::class,'dislike']);
                 Route::get('save',[Home\Forum\PostController::class,'save']);
+                Route::get('report',[Home\Forum\PostController::class,'report']);
                 Route::prefix('comment')->group(function()
                 {
                     Route::post('/',[Home\Forum\CommentController::class,'store']);

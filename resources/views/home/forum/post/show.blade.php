@@ -66,6 +66,11 @@
                 @else
                     <a href="/{{$forum->slug}}/{{$post->id}}/save" class="warning"><i class="far fa-archive"></i></a>
                 @endif
+                @if($post->isUserReport(auth('user')->user()))
+                    <a href="/{{$forum->slug}}/{{$post->id}}/report" class="primary"><i class="fas fa-exclamation-square"></i></a>
+                @else
+                    <a href="/{{$forum->slug}}/{{$post->id}}/report" class="primary"><i class="far fa-exclamation-square"></i></a>
+                @endif
             </div>
         @else
             <div class="like disabled">
@@ -83,6 +88,8 @@
                                 <img src="{{$comment->user->avatar ? Storage::disk('public_media')->url($comment->user->avatar) : asset('assets/construct/media/avatar.svg')}}">
                             </div>
                             <div class="text">
+                                <p>{{$comment->user->name.' '.$comment->user->surname}}</p>
+                                <br>
                                 <p>{{$comment->text}}</p>
                                 <div class="information">
                                     <div class="icon">
@@ -110,6 +117,8 @@
                                             <img src="{{$comment->user->avatar ? Storage::disk('public_media')->url($comment->user->avatar) : asset('assets/construct/media/avatar.svg')}}">
                                         </div>
                                         <div class="text">
+                                            <p>{{$comment->user->name.' '.$comment->user->surname}}</p>
+                                            <br>
                                             <p>{{$comment->text}}</p>
                                             <div class="information">
                                                 <div class="icon">
