@@ -73,7 +73,7 @@
                         </div>
                         <div class="body">
                             <div class="demo">
-                                <p>{{Str::limit(strip_tags($post->content),250)}}</p>
+                                <p>{{str_replace('&nbsp;',' ',Str::limit(strip_tags($post->content),250))}}</p>
                             </div>
                         </div>
                         <div class="footer">

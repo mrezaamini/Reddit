@@ -17,7 +17,7 @@
 						<h6>{{$post->title}}</h6>
 					</div>
 					<div class="body">
-						<p style="text-align: justify; line-height: 1.8; font-size: 13px; color: #000000aa">{{Str::limit(strip_tags($post->content),250)}}</p>
+						<p style="text-align: justify; line-height: 1.8; font-size: 13px; color: #000000aa">{{str_replace('&nbsp;',' ',Str::limit(strip_tags($post->content),250))}}</p>
 						<br>
 						<a class="btn btn-primary" href="/{{$post->forum->slug}}/{{$post->id}}/information"> اطلاعات بیشتر </a>
 					</div>

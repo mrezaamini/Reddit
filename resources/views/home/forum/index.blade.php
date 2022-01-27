@@ -13,7 +13,7 @@
                             </div>
                             <div class="body">
                                 <div class="demo">
-                                    <p>{{Str::limit(strip_tags($forum->demo),250)}}</p>
+                                    <p>{{str_replace('&nbsp;',' ',Str::limit(strip_tags($forum->demo),250))}}</p>
                                 </div>
                             </div>
                             <div class="footer">
@@ -41,7 +41,7 @@
                             </div>
                             <div class="body">
                                 <div class="demo">
-                                    <p>{{Str::limit(strip_tags($forum->demo),250)}}</p>
+                                    <p>{{str_replace('&nbsp;',' ',Str::limit(strip_tags($forum->demo),250))}}</p>
                                 </div>
                             </div>
                             <div class="footer">

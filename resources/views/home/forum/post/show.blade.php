@@ -23,7 +23,7 @@
                         <img src="{{$post->user->avatar ? Storage::disk('public_media')->url($post->user->avatar) : asset('assets/construct/media/avatar.svg')}}">
                     </div>
                     <div class="name">
-                        <p>{{$forum->user->name.' '.$forum->user->surname}}</p>
+                        <p>{{$post->user->name.' '.$post->user->surname}}</p>
                     </div>
                 </div>
                 <div class="information">
