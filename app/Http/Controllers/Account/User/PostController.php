@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Http\Controllers\Account\User;
 
 use App\Http\Controllers\Controller;
@@ -8,6 +9,7 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
+	// Show owned post or posts of all your forums
     public function index()
     {
         return view('account.user.post.index',[
@@ -16,6 +18,7 @@ class PostController extends Controller
         ]);
     }
 
+	// Return create post view
     public function create()
     {
         return view('account.user.post.create',[
@@ -23,6 +26,8 @@ class PostController extends Controller
             'ownedForums'=>auth('user')->user()->forums,
         ]);
     }
+
+	// Create post with sent data from create view
     public function store(StoreRequest $request)
     {
         // Create post
@@ -35,7 +40,8 @@ class PostController extends Controller
         return redirect()->route('account.user.post.index')->with('success',['پست '.$request->title.' با موفقیت ایجاد شد']);
     }
 
-    public function edit(Post $post)
+	// Return edit post view (with selected post data)
+	public function edit(Post $post)
     {
         return view('account.user.post.edit',[
             'post'=>$post,
@@ -43,7 +49,9 @@ class PostController extends Controller
             'ownedForums'=>auth('user')->user()->forums,
         ]);
     }
-    public function update(UpdateRequest $request,Post $post)
+
+	// Update the selected post in edit function
+	public function update(UpdateRequest $request,Post $post)
     {
         // Create post
         $post->update([
@@ -55,6 +63,7 @@ class PostController extends Controller
         return redirect()->route('account.user.post.index')->with('success',['پست '.$request->title.' با موفقیت ویرایش شد']);
     }
 
+    // Delete the selected post
     public function delete(Post $post)
     {
         // Delete post

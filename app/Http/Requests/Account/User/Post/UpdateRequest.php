@@ -6,11 +6,13 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateRequest extends FormRequest
 {
-    public function authorize()
+	// Authorize request sent by user
+	public function authorize()
     {
         return true;
     }
 
+    // Validate sent data from user to update selected post
     public function rules()
     {
         return [
@@ -19,7 +21,6 @@ class UpdateRequest extends FormRequest
             'post_content'=>['required','min:100'],
         ];
     }
-
     public function attributes()
     {
         return [

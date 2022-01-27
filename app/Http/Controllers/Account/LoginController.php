@@ -7,11 +7,13 @@ use App\Http\Requests\Account\Login\StoreRequest;
 
 class LoginController extends Controller
 {
+	// Show login page
     public function index()
     {
         return view('account.login');
     }
 
+    // Login to session by sent data from login page view
     public function login(StoreRequest $request)
     {
         // Login to auth

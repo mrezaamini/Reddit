@@ -6,11 +6,13 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreRequest extends FormRequest
 {
-    public function authorize()
+	// Authorize request sent by user
+	public function authorize()
     {
         return true;
     }
 
+    // Validate sent data from users to register as new user
     public function rules()
     {
         return [
@@ -21,7 +23,6 @@ class StoreRequest extends FormRequest
             'email'=>['required','email','unique:users,email']
         ];
     }
-
     public function messages()
     {
         return [

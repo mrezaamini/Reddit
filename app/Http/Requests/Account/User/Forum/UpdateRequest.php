@@ -6,11 +6,13 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateRequest extends FormRequest
 {
-    public function authorize()
+	// Authorize request sent by user
+	public function authorize()
     {
         return true;
     }
 
+    // Validate sent data from user to update forum
     public function rules()
     {
         return [
@@ -21,7 +23,6 @@ class UpdateRequest extends FormRequest
             'category.*'=>['required']
         ];
     }
-
     public function messages()
     {
         return [
@@ -29,7 +30,6 @@ class UpdateRequest extends FormRequest
             'english_title.regex'=>'عنوان دوره به زبان انگلیسی باید شامل حروف انگلیسی و فاصله باشد',
         ];
     }
-
     public function attributes()
     {
         return [

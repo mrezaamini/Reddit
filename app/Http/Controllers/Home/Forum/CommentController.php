@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
+	// Add comment to selected post
     public function store(Request $request,Forum $forum,Post $post)
     {
     	// Check if block
@@ -32,6 +33,7 @@ class CommentController extends Controller
         return redirect()->route('home.forum.post.show',[$forum->slug,$post->id])->with('success',['کامنت شما با موفقیت اضافه شد']);
     }
 
+    // Add like to selected post by user
     public function like(Forum $forum,Post $post,Comment $comment)
     {
     	// Check if block
@@ -52,6 +54,8 @@ class CommentController extends Controller
 
         return redirect()->route('home.forum.post.show',[$forum->slug,$post->id])->with('success',['درخواست شما با موفقیت انجام شد']);
     }
+
+	// Add dislike to selected post by user
     public function dislike(Forum $forum,Post $post,Comment $comment)
     {
     	// Check if block

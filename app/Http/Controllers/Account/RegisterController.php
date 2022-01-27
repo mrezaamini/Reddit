@@ -10,11 +10,14 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
-    public function index()
+	// Show register page
+	public function index()
     {
         return view('account.register');
     }
-    public function register(StoreRequest $request)
+
+	// Register with sent data from register page view
+	public function register(StoreRequest $request)
     {
         // Create user
         $user=User::create([

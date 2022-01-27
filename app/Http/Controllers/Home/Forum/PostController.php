@@ -8,6 +8,7 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
+	// Show selected post from selected forums
     public function show(Forum $forum,Post $post)
     {
         return view('home.forum.post.show',[
@@ -16,6 +17,7 @@ class PostController extends Controller
         ]);
     }
 
+    // Like selected post by user
     public function like(Forum $forum,Post $post)
     {
     	// Check if block
@@ -36,6 +38,8 @@ class PostController extends Controller
 
         return redirect()->route('home.forum.post.show',[$forum->slug,$post->id])->with('success',['درخواست شما با موفقیت انجام شد']);
     }
+
+	// Dislike selected post by user
 	public function dislike(Forum $forum,Post $post)
 	{
 		// Check if block
@@ -56,6 +60,8 @@ class PostController extends Controller
 
 		return redirect()->route('home.forum.post.show',[$forum->slug,$post->id])->with('success',['درخواست شما با موفقیت انجام شد']);
 	}
+
+	// Save selected post by user
 	public function save(Forum $forum,Post $post)
 	{
 		// Check if block
@@ -73,6 +79,8 @@ class PostController extends Controller
 
 		return redirect()->route('home.forum.post.show',[$forum->slug,$post->id])->with('success',['درخواست شما با موفقیت انجام شد']);
 	}
+
+	// Report selected post by user
 	public function report(Forum $forum,Post $post)
 	{
 		if($post->isUserReport(auth('user')->user()))

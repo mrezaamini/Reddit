@@ -6,11 +6,13 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateRequest extends FormRequest
 {
-    public function authorize()
+	// Authorize request sent by user
+	public function authorize()
     {
         return true;
     }
 
+    // Validate image sent by user to add or replace avatar
     public function rules()
     {
         return [

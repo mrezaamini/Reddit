@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
+	// Search in forum title or content and post title or content
 	public function index(Request $request)
 	{
 		return view('home.search',[

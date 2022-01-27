@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class ForumController extends Controller
 {
+	// Show all forums and hottest forums
     public function index()
     {
         return view('home.forum.index',[
@@ -21,6 +22,8 @@ class ForumController extends Controller
 	        ])->orderBy('posts_count','DESC')->get()
         ]);
     }
+
+    // Show information of selected forum
     public function show(Forum $forum,Request $request)
     {
     	switch($request->get('orderBy'))
@@ -50,6 +53,7 @@ class ForumController extends Controller
         ]);
     }
 
+    // Join to forum by user
     public function join(Forum $forum)
     {
         // Check
@@ -65,6 +69,8 @@ class ForumController extends Controller
 
         return redirect()->route('home.forum.show',$forum->slug)->with('success',['درخواست شما با موفقیت انجام شد']);
     }
+
+    // Leave from forums by user
     public function leave(Forum $forum)
     {
         // Check
