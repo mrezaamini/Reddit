@@ -5,7 +5,7 @@
             <h6> حساب کاربری </h6>
         </div>
         <div class="tool-bar">
-            <a href="/account/user/setting"><i class="fal fa-cog"></i></a>
+            <a href="/account/user/setting/profile"><i class="fal fa-cog"></i></a>
         </div>
     </div>
     <div class="profile">

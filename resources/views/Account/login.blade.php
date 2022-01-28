@@ -23,7 +23,7 @@
                     </div>
                     <div class="input">
                         <input type="password" autocomplete="off" name="password" placeholder="گذرواژه">
-                        <i class="far fa-lock-alt"></i>
+                        <i class="far fa-eye show-password"></i>
                     </div>
                 </div>
                 <div class="input-mask" mask-type="checkbox">

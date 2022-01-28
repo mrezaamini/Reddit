@@ -116,6 +116,11 @@ Route::prefix('account')->group(function()
         // Setting
         Route::prefix('setting')->group(function()
         {
+        	Route::prefix('profile')->group(function()
+	        {
+	        	Route::get('/',[Account\User\Setting\ProfileController::class,'index'])->name('account.user.setting.profile');
+	        	Route::patch('/',[Account\User\Setting\ProfileController::class,'update']);
+	        });
             Route::patch('avatar',[Account\User\Setting\AvatarController::class,'update']);
         });
 

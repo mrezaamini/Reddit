@@ -14,8 +14,16 @@ class SearchController extends Controller
 	public function index(Request $request)
 	{
 		return view('home.search',[
-			'forums'=>Forum::where('title','like','%'.$request->keyword.'%')->orWhere('demo','like','%'.$request->keyword.'%')->get(),
-			'posts'=>Post::where('title','like','%'.$request->keyword.'%')->orWhere('content','like','%'.$request->keyword.'%')->get(),
+			'forums'=>Forum::whereHas('user',function($query) use ($request)
+				{
+					$query->where('name','like','%'.$request->keyword.'%')->orWhere('surname','like','%'.$request->keyword.'%');
+				}
+			)->orWhere('title','like','%'.$request->keyword.'%')->orWhere('demo','like','%'.$request->keyword.'%')->get(),
+			'posts'=>Post::whereHas('user',function($query) use ($request)
+				{
+					$query->where('name','like','%'.$request->keyword.'%')->orWhere('surname','like','%'.$request->keyword.'%');
+				}
+			)->orWhere('title','like','%'.$request->keyword.'%')->orWhere('content','like','%'.$request->keyword.'%')->get(),
 		]);
 	}
 }
