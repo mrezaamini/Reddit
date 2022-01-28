@@ -33,6 +33,8 @@ these first scripts is needed only for the first time you want to initialize you
 
 after that your project will run on port 8000 and you can watch data base from the phpadmin route (you can change or set database username and password in .env file)
 
+(you can observe screenshots in ScreenShots Folder)
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
